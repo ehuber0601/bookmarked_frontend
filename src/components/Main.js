@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react"
 import {Route, Routes} from "react-router-dom"
-import Index from "../pages/Index"
-import Show from "../pages/Show"
+import Index from "../pages/index"
+import Edit from "../pages/Edit"
 
 const Main = (props) => {
     // State to hold our list of bookmarks
@@ -55,7 +55,7 @@ const deleteBookmark = async (id) => {
         method: "delete"
     })
     // update the list of bookmarks
-    getBookmarks()
+    getBookmark()
 }
 
 
@@ -72,7 +72,7 @@ return (
         <Index bookmark={bookmark} createPeople={createBookmark}/>
         } />
         <Route path="/bookmark/:id" element={
-        <Show bookmark={bookmark} updateBookmark={updateBookmark} deleteBookmark={deleteBookmark}/>} 
+        <Edit bookmark={bookmark} updateBookmark={updateBookmark} deleteBookmark={deleteBookmark}/>} 
         />
       </Routes>
     </main>

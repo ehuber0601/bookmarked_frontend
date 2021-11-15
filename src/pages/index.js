@@ -50,11 +50,11 @@ const handleSubmit = (event) => {
         <input type="submit" value="Create Bookmark"/>
     </form>
 
-if (props.bookmarks) {
+if (props.bookmark) {
     return (
       <section>
         {form}
-        {props.bookmarks.map((bookmark) => {
+        {props.bookmark.map((bookmark) => {
           return (
             <div key={bookmark._id} className="bookmark">
               <Link to={`/bookmarks/${bookmark._id}`}>
