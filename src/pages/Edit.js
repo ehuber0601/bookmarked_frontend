@@ -28,7 +28,7 @@ const Edit = (props) => {
         navigate("/")
     }
 
-    const removeBookmark = () => {
+    const removeBookmarks = () => {
         props.deleteBookmarks(bookmark._id)
         navigate("/")
     }
@@ -52,15 +52,19 @@ const Edit = (props) => {
           <input type="submit" value="Update Bookmark" />
         </form>
       );
-
+      return (
+        <div className="bookmark">
+          <h1>{bookmark.title}</h1>
+          <h2><a href={bookmark.url}>Visit Bookmark</a></h2>
+          {form}
+          <button onClick={removeBookmarks}>DELETE BOOKMARK</button>
+        </div>
+      );
+    
+  } else {
     return (
-      <div className="bookmark">
-        <h1>{bookmark.title}</h1>
-        <h2>{bookmark.url}</h2>
-        {form}
-        <button onClick={removeBookmark}>DELETE BOOKMARK</button>
-      </div>
-    );
+      <p>Loading...</p>
+    )
   }
 };
 

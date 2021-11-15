@@ -5,23 +5,23 @@ import Edit from "../pages/Edit"
 
 const Main = (props) => {
     // State to hold our list of bookmarks
-    const [bookmark, setBookmark] = useState(null)
+    const [bookmarks, setBookmarks] = useState(null)
 
     // your deployed heroku URL
   const URL = "https://bookmarkd-backend.herokuapp.com/bookmark/"
 
   // function to get updated list of bookmarks
-  const getBookmark = async () => {
+  const getBookmarks = async () => {
     // make the api call
     const response = await fetch(URL)
     // turn the response in an object
     const data = await response.json()
     // set the state to the api data
-    setBookmark(data)
+    setBookmarks(data)
 }
 
   // function that will later be passed data from our new/create form and make the post request to create a new bookmark
-  const createBookmark = async (bookmark) => {
+  const createBookmarks = async (bookmark) => {
     // make the post request to our API
     await fetch(URL, {
         method: "post",
@@ -32,10 +32,10 @@ const Main = (props) => {
     })
 
     // get updated list of bookmark
-    getBookmark()
+    getBookmarks()
 }
   // function to update a bookmark
-  const updateBookmark = async (bookmark, id) => {
+  const updateBookmarks = async (bookmark, id) => {
     // make the put request
     await fetch(URL + id, {
         method: "put",
@@ -45,34 +45,34 @@ const Main = (props) => {
         body: JSON.stringify(bookmark)
     })
     // update the list of bookmark
-    getBookmark()
+    getBookmarks()
 }
 
 // create function to delete a bookmark
-const deleteBookmark = async (id) => {
+const deleteBookmarks = async (id) => {
     // make the delete request
     await fetch(URL + id, {
         method: "delete"
     })
     // update the list of bookmarks
-    getBookmark()
+    getBookmarks()
 }
 
 
 
    // a useEffect to make a call to getBookmark when page loads
    useEffect(() => {
-    getBookmark()
+    getBookmarks()
 }, [])
 
 return (
     <main>
       <Routes>
         <Route path="/" element={
-        <Index bookmark={bookmark} createPeople={createBookmark}/>
+        <Index bookmarks={bookmarks} createBookmarks={createBookmarks}/>
         } />
         <Route path="/bookmark/:id" element={
-        <Edit bookmark={bookmark} updateBookmark={updateBookmark} deleteBookmark={deleteBookmark}/>} 
+        <Edit bookmarks={bookmarks} updateBookmarks={updateBookmarks} deleteBookmarks={deleteBookmarks}/>} 
         />
       </Routes>
     </main>

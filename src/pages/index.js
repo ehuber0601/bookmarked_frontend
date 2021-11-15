@@ -23,8 +23,8 @@ const Index = (props) => {
 const handleSubmit = (event) => {
     // prevent the page from refreshing
     event.preventDefault()
-    // pass the form data to createPeople function
-    props.createPeople(newForm)
+    // pass the form data to createBookmark function
+    props.createBookmarks(newForm)
     // reset the form to empty
     setNewForm({
       title: "",
@@ -44,23 +44,22 @@ const handleSubmit = (event) => {
         type="text"
         value={newForm.url}
         name="url"
-        placeholder="Image URL"
+        placeholder="URL"
         onChange={handleChange}
         />
         <input type="submit" value="Create Bookmark"/>
     </form>
 
-if (props.bookmark) {
+if (props.bookmarks) {
     return (
       <section>
         {form}
-        {props.bookmark.map((bookmark) => {
+        {props.bookmarks.map((bookmark) => {
           return (
             <div key={bookmark._id} className="bookmark">
-              <Link to={`/bookmarks/${bookmark._id}`}>
+              <Link to={`/bookmark/${bookmark._id}`}>
                 <h1>{bookmark.title}</h1>
               </Link>
-              <img src={bookmark.url} alt={bookmark.title} />
             </div>
           );
         })}
