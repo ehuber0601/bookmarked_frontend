@@ -57,7 +57,7 @@ const Edit = (props) => {
           <h1>{bookmark.title}</h1>
           <h2><a href={bookmark.url}>Visit Bookmark</a></h2>
           {form}
-          <button onClick={removeBookmarks}>DELETE BOOKMARK</button>
+          <button onClick={removeBookmarks}>Delete</button>
         </div>
       );
     

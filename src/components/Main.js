@@ -66,7 +66,7 @@ const deleteBookmarks = async (id) => {
 }, [])
 
 return (
-    <main>
+    <main class="mdc-top-app-bar--fixed-adjust">
       <Routes>
         <Route path="/" element={
         <Index bookmarks={bookmarks} createBookmarks={createBookmarks}/>
