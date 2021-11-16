@@ -52,13 +52,13 @@ const handleSubmit = (event) => {
 
 if (props.bookmarks) {
     return (
-      <section>
+      <section class="home-section">
         {form}
         {props.bookmarks.map((bookmark) => {
           return (
             <div key={bookmark._id} className="bookmark">
               <Link to={`/bookmark/${bookmark._id}`}>
-                <h1>{bookmark.title}</h1>
+                <h1 class="one-bookmark">{bookmark.title}</h1>
               </Link>
             </div>
           );
